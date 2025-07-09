@@ -20,8 +20,7 @@
         // "cpu",
         // "memory",
         // "temperature",
-        "keyboard-state",
-        "bluetooth",
+        // "bluetooth",
         "backlight",
         "battery",
         "clock",
@@ -54,7 +53,7 @@
         "format": "{icon}",
         "format-off": "󰂲",
         "format-on": "",
-        "format-connected": " {device}",
+        "format-connected": " {device_alias}",
         "format-icons": {
             "enabled": "",
             "disabled": "󰂲",
@@ -63,7 +62,7 @@
         "tooltip-format": "Bluetooth: {status}",
         "tooltip-format-off": "Bluetooth: Off",
         "tooltip-format-on": "Bluetooth: On",
-        "tooltip-format-connected": "Bluetooth: {device}",
+        "tooltip-format-connected": "Bluetooth: {device_alias}",
         "on-click": "overskride"
     },
     "mpd": {
