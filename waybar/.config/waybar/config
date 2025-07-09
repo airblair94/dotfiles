@@ -20,10 +20,10 @@
         // "cpu",
         // "memory",
         // "temperature",
+        "keyboard-state",
         "bluetooth",
         "backlight",
         "battery",
-        "battery#bat2",
         "clock",
         "tray",
         "custom/power"
@@ -51,19 +51,20 @@
         }
     },
     "bluetooth": {
-        "format": "{icon} {status}",
-        "format-off": " off",
-        "format-on": " on",
+        "format": "{icon}",
+        "format-off": "󰂲",
+        "format-on": "",
         "format-connected": " {device}",
         "format-icons": {
             "enabled": "",
-            "disabled": "",
-            "off": ""
+            "disabled": "󰂲",
+            "off": "󰂲"
         },
         "tooltip-format": "Bluetooth: {status}",
         "tooltip-format-off": "Bluetooth: Off",
         "tooltip-format-on": "Bluetooth: On",
-        "tooltip-format-connected": "Bluetooth: {device}"
+        "tooltip-format-connected": "Bluetooth: {device}",
+        "on-click": "overskride"
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -128,7 +129,7 @@
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
+        "format": "{icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
@@ -168,7 +169,6 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "on-click": "nm-connection-editor"
     },
     "pulseaudio": {
