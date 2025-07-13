@@ -11,7 +11,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   })
   end
 vim.opt.rtp:prepend(lazypath)
--- Loading vim options and other plugins
+
 require("vim-options")
 require('lazy').setup("plugins")
 
