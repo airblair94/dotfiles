@@ -3,7 +3,7 @@
 BAT=$(echo /sys/class/power_supply/BAT*)
 BAT_STATUS="$BAT/status"
 BAT_CAP="$BAT/capacity"
-LOW_BAT_PERCENT=20
+LOW_BAT_PERCENT=30
 
 AC_PROFILE="performance"
 BAT_PROFILE="balanced"
