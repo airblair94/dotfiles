@@ -5,8 +5,8 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
-  },
-  config = function()
+  }
+  -- config = function()
     require('neo-tree').setup({
       filesystem = {
         filtered_items = {

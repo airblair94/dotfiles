@@ -6,9 +6,5 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set expandtab")
 vim.cmd("set incsearch")
 vim.cmd("set ignorecase")
-vim.cmd("filetype on")
-vim.cmd("filetype plugin on")
-vim.cmd("filetype indent on")
+vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
-
-

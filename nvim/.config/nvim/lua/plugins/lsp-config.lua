@@ -27,7 +27,7 @@ return {
       lspconfig.ruff.setup({})
       lspconfig.eslint.setup({})
       lspconfig.postgres_lsp.setup({})
-    vim.keymap.set({ 'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
+      vim.keymap.set({ 'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
     end
   }
 }
