@@ -6,17 +6,7 @@ return {
   config = function()
     local config = require("nvim-treesitter.configs")
     config.setup({
-      ensure_installed = {
-        "lua",
-        "javascript",
-        "python",
-        "diff",
-        "dockerfile",
-        "html",
-        "json",
-        "ssh_config",
-        "tsx"
-      },
+      auto_install = true,
       highlight = { enable = true },
       indent = { enable = true },
     })

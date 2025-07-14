@@ -13,6 +13,8 @@ return {
           "lua_ls",
           "ruff",
           "postgres_lsp",
+          "eslint",
+
         }
       })
     end
@@ -22,6 +24,9 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
+      lspconfig.ruff.setup({})
+      lspconfig.eslint.setup({})
+      lspconfig.postgres_lsp.setup({})
     vim.keymap.set({ 'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
     end
   }
