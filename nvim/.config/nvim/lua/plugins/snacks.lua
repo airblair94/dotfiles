@@ -22,7 +22,7 @@ return {
       enabled = true,
       hidden = true,
       -- include = { ".config", ".ssh" },
-      exclude = { ".local", "Library", ".Trash", ".cache", ".cursor", ".docker", ".iterm2", ".npm", ".nvm", ".zsh_sessions", ".vscode", ".zsh_history" },
+      exclude = { ".local/", "Library", ".Trash", ".cache", ".cursor", ".docker", ".iterm2", ".npm", ".nvm", ".zsh_sessions", ".vscode", ".zsh_history" },
       matcher = {
         smartcase = true,
         ignorecase = true
