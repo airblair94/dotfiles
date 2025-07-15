@@ -13,15 +13,22 @@ return {
     explorer = {
       enabled = true,
       hidden = true,
+      git_status = true,
+      git_status_open = true,
+      follow_file = true,
     },
     input = { enabled = true },
     picker = {
       enabled = true,
+      hidden = true,
+      -- include = { ".config", ".ssh" },
+      exclude = { ".local", "Library", ".Trash", ".cache", ".cursor", ".docker", ".iterm2", ".npm", ".nvm", ".zsh_sessions", ".vscode", ".zsh_history" },
       matcher = {
         smartcase = true,
         ignorecase = true
       }
     },
+    lazygit = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
     scope = { enabled = true },
@@ -30,11 +37,16 @@ return {
     words = { enabled = true },
   },
   keys = {
-    { "<c-p>", function() Snacks.picker.files({
-      follow = true,
-      hidden = true,
-      exclude = { "Library", ".local", ".cache", ".zsh_sessions" }
-    }) end, desc = "File Explorer" },
+    {
+      "<c-p>",
+      function() Snacks.picker.files({
+        follow = true,
+        hidden = true,
+        exclude = { "library", ".local", ".cache", ".zsh_sessions" }
+      }) end,
+      desc = "file search"
+    },
+    { "<c-e>", function() Snacks.explorer.reveal() end, desc = "file search" },
     { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>/", function() Snacks.picker.grep({
       hidden = true,
@@ -51,6 +63,7 @@ return {
     { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
     -- git
+    { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazy Git" },
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
     { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
