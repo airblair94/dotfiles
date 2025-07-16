@@ -8,3 +8,6 @@ vim.cmd("set incsearch")
 vim.cmd("set ignorecase")
 vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
+vim.diagnostic.config({
+  virtual_text = true
+})
