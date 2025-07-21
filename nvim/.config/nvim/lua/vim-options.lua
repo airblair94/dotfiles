@@ -9,5 +9,8 @@ vim.cmd("set ignorecase")
 vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.diagnostic.config({
-  virtual_text = true
+  -- virtual_text = true
+  virtual_lines = {
+    current_lines = true
+  }
 })

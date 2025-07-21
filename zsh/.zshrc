@@ -104,5 +104,8 @@ export SSH_AUTH_SOCK="~/.1password/agent.socket"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+. /usr/share/nvm/init-nvm.sh
+
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
