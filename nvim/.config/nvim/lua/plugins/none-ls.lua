@@ -9,7 +9,6 @@ return {
         -- null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.formatting.prettierd,
         -- python
-        -- null_ls.builtins.diagnostics.ruff,
         null_ls.builtins.formatting.isort,
       },
 		})

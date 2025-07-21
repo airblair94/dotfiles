@@ -21,12 +21,31 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    dependencies = { 'saghen/blink.cmp' },
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "LspInfo", "LspInstall", "LspUninstall" },
     config = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({})
-      lspconfig.ruff.setup({})
-      lspconfig.eslint.setup({})
-      lspconfig.postgres_lsp.setup({})
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+      vim.lsp.config('*', {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config('ruff', {
+        init_options = {
+          settings = {
+            lint = {
+              ignore = { "E501", "E302" }
+            },
+          },
+        }
+      })
+
+      vim.lsp.enable('ruff')
+      vim.lsp.enable('pylsp')
+      vim.lsp.enable('lua_ls')
+      vim.lsp.enable('eslint')
+
       vim.keymap.set({ 'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
     end
   }
