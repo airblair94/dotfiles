@@ -30,21 +30,29 @@ return {
       vim.lsp.config('*', {
         capabilities = capabilities,
       })
-
-      vim.lsp.config('ruff', {
-        init_options = {
-          settings = {
-            lint = {
-              ignore = { "E501", "E302" }
-            },
+      vim.lsp.config('pylsp', {
+        plugins = {
+          ruff = {
+            enabled = true,
+            formatEnabled = true,
+            lineLength = 120,
+            ignore = { "E501", "E302" }
           },
         }
       })
-
-      vim.lsp.enable('ruff')
+      vim.diagnostic.config({
+        virtual_text = {
+          current_line = true
+        }
+        -- virtual_lines = {
+        --   current_line = true
+        -- }
+      })
+      vim.lsp.enable('lua_ls')
       vim.lsp.enable('pylsp')
       vim.lsp.enable('lua_ls')
       vim.lsp.enable('eslint')
+
 
       vim.keymap.set({ 'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
     end
