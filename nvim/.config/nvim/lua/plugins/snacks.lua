@@ -20,22 +20,37 @@ return {
     },
     explorer = {
       enabled = true,
-      hidden = true,
-      git_status = true,
-      git_status_open = true,
-      follow_file = true,
-      auto_close = true,
     },
     input = { enabled = true },
     picker = {
       enabled = true,
       hidden = true,
-      -- include = { ".config", ".ssh" },
-      exclude = { ".local/", "Library", ".Trash", ".cache", ".cursor", ".docker", ".iterm2", ".npm", ".nvm", ".zsh_sessions", ".vscode", ".zsh_history" },
+      include = { ".env.development.local", ".env.staging.local", ".env.production.local" },
+      exclude = { ".local", "Library", ".Trash", ".cache", ".cursor", ".docker", ".iterm2", ".npm", ".nvm", ".zsh_sessions", ".vscode", ".zsh_history" },
       matcher = {
         smartcase = true,
         ignorecase = true
-      }
+      },
+      sources = {
+        files = {
+          hidden = true,
+        },
+        explorer = {
+          hidden = true,
+          git_status = true,
+          git_status_open = true,
+          follow_file = true,
+          auto_close = true,
+        },
+        projects = {
+          dev = { "~/enodo" }
+        }
+      },
+      formatters = {
+        file = {
+          git_status_hl = true,
+        },
+      },
     },
     lazygit = { enabled = true },
     notifier = { enabled = true },
@@ -51,7 +66,8 @@ return {
       function() Snacks.picker.files({
         follow = true,
         hidden = true,
-        exclude = { "library", ".local", ".cache", ".zsh_sessions" }
+        exclude = { "library", ".local", ".cache", ".zsh_sessions" },
+        cwd = true
       }) end,
       desc = "file search"
     },
@@ -60,7 +76,7 @@ return {
     { "<leader>/", function() Snacks.picker.grep({
       hidden = true,
       exclude = { "Library", ".local", ".cache", ".zsh_sessions" },
-      follow = true
+      follow = true,
     }) end, desc = "Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
@@ -83,7 +99,7 @@ return {
     -- Grep
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
-    { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
+    -- { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
     -- search
     { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },

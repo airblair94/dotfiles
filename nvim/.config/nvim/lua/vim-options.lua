@@ -9,4 +9,8 @@ vim.cmd("set ignorecase")
 vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.keymap.set("i", "jk", "<Esc>", {})
-
+vim.keymap.set("i", "jjk", "<Esc> :w <Enter>", {})
+vim.keymap.set("n", "<C-l>", "<C-w><right>", {})
+vim.keymap.set("n", "<C-h>", "<C-w><left>", {})
+vim.keymap.set("n", "<C-j>", "<C-w><down>", {})
+vim.keymap.set("n", "<C-k>", "<C-w><up>", {})
