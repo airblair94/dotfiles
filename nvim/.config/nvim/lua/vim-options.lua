@@ -14,3 +14,5 @@ vim.keymap.set("n", "<C-l>", "<C-w><right>", {})
 vim.keymap.set("n", "<C-h>", "<C-w><left>", {})
 vim.keymap.set("n", "<C-j>", "<C-w><down>", {})
 vim.keymap.set("n", "<C-k>", "<C-w><up>", {})
+vim.wo.relativenumber = true
+

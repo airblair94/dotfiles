@@ -4,10 +4,13 @@ return {
   dependencies = {
     'Kaiser-Yang/blink-cmp-avante',
     "giuxtaposition/blink-cmp-copilot",
+    'rafamadriz/friendly-snippets',
     {
       'L3MON4D3/LuaSnip',
       version = 'v2.*', 
-      dependencies = { 'rafamadriz/friendly-snippets', },
+      config = function ()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end
     }
   },
   version = '1.*',
@@ -67,5 +70,5 @@ return {
     },
     fuzzy = { implementation = "prefer_rust_with_warning" }
   },
-  signature = { enabled = true }
+  signature = { enabled = true },
 }
