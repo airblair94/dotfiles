@@ -46,6 +46,7 @@
 #power-profiles-daemon,
 #idle_inhibitor,
 #bluetooth,
+#custom-vpn-menu,
 #custom-power {
   background-color: @surface0;
   padding: 0.5rem 1rem;

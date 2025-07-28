@@ -16,6 +16,7 @@
         "pulseaudio",
         "idle_inhibitor",
         "network",
+        "custom/vpn-menu",
         "power-profiles-daemon",
         // "cpu",
         // "memory",
@@ -144,6 +145,7 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
+        
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
@@ -168,7 +170,31 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "on-click": "nm-connection-editor"
+        "on-click": "network_manager"
+    },
+    "custom/vpn-menu": {
+      // "format": "🔓",
+      "return-type": "json",
+      "format": "{text} {icon}",
+      "tooltip-format": "{text} {alt}",
+      "exec": "$HOME/.config/waybar/get-vpn.sh",
+      "interval": 5,
+      "format-icons": {
+        "connected": "🔒",
+        "disconnected": "🔓"
+      },
+      "menu": "on-click-right",
+      "menu-file": "$HOME/.config/waybar/vpn_menu.xml", // Menu file in resources folder
+      "menu-actions": {
+        "e-home": "nmcli connection up Home", // & nm-applet --indicator",
+        "d-home": "nmcli connection down Home", // & killall nm-applet",
+        "e-tailscale": "tailscale up", // & tailscale-systray",
+        "d-tailscale": "tailscale down", // & killall tailscale-systray",
+        "e-nord": "nordvpn connect",
+        "e-nord-uk": nordvpn connect uk",
+        "d-nord": "nordvpn disconnect"
+      },
+
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
