@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkMenu" id="menu">
+     <child>
+		<object class="GtkMenuItem" id="e-home">
+			<property name="label">Enable Home</property>
+        </object>
+	</child>
+    <child>
+		<object class="GtkMenuItem" id="d-home">
+			<property name="label">Disable Home</property>
+        </object>
+	</child>
+  <child>
+    <object class="GtkSeparatorMenuItem" id="delimiter1"/>
+  </child>
+	<child>
+		<object class="GtkMenuItem" id="e-tailscale">
+			<property name="label">Enable Tailscale</property>
+        </object>
+	</child>
+	<child>
+        <object class="GtkMenuItem" id="d-tailscale">
+			<property name="label">Disable Tailscale</property>
+        </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="delimiter2"/>
+    </child>
+    <child>
+        <object class="GtkMenuItem" id="e-nord">
+			<property name="label">Enable Nord VPN</property>
+        </object>
+    </child>
+    <child>
+		<object class="GtkMenuItem" id="d-nord">
+			<property name="label">Disable Nord VPN</property>
+		</object>
+    </child>
+  </object>
+</interface>
