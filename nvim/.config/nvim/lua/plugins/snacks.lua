@@ -67,7 +67,7 @@ return {
         follow = true,
         hidden = true,
         exclude = { "library", ".local", ".cache", ".zsh_sessions" },
-        cwd = true
+        -- cwd = true
       }) end,
       desc = "file search"
     },

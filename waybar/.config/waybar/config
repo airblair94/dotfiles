@@ -183,7 +183,7 @@
         "connected": "🔒",
         "disconnected": "🔓"
       },
-      "menu": "on-click-right",
+      "menu": "on-click",
       "menu-file": "$HOME/.config/waybar/vpn_menu.xml", // Menu file in resources folder
       "menu-actions": {
         "e-home": "nmcli connection up Home", // & nm-applet --indicator",
@@ -191,7 +191,7 @@
         "e-tailscale": "tailscale up", // & tailscale-systray",
         "d-tailscale": "tailscale down", // & killall tailscale-systray",
         "e-nord": "nordvpn connect",
-        "e-nord-uk": nordvpn connect uk",
+        "e-nord-uk": "nordvpn connect uk",
         "d-nord": "nordvpn disconnect"
       },
 
