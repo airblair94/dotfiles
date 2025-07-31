@@ -1,26 +1,27 @@
 @import "mocha.css";
 
+
 * {
   font-family: BlexMono Nerd Font;
-  font-size: 15px;
+  font-size: 12px;
   min-height: 0;
 }
 
 #waybar {
-  background: transparent;
+  background: @surface0;
   color: @text;
-  margin: 5px 5px;
+  margin: 0px 0px;
 }
 
-#workspaces {
-  border-radius: 1rem;
-  margin: 5px;
-  background-color: @surface0;
-  margin-left: 1rem;
-}
+/* #workspaces { */
+/*   margin: 5px; */
+/*   background-color: @surface0; */
+/*   margin-left: 1rem; */
+/* } */
 
 #workspaces button {
   color: @lavender;
+  all: initial;
   border-radius: 1rem;
   padding: 0.4rem;
 }
@@ -35,28 +36,27 @@
   border-radius: 1rem;
 }
 
-#custom-music,
-#tray,
+#tray-expander,
 #backlight,
 #clock,
 #battery,
 #pulseaudio,
 #custom-lock,
 #network,
+#cpu,
 #power-profiles-daemon,
 #idle_inhibitor,
 #bluetooth,
 #custom-vpn-menu,
 #custom-power {
-  background-color: @surface0;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
+  min-width: 12px;
+  margin: 0 7.5px;
 }
 
 #clock {
   color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
+  /* border-radius: 0px 1rem 1rem 0px; */
+  /* margin-right: 1rem; */
 }
 
 #battery {
@@ -101,7 +101,7 @@
     color: @red;
 }
 
-#tray {
-  margin-right: 1rem;
+#tray-expander {
+  margin-right: 0.5rem;
   border-radius: 1rem;
 }
