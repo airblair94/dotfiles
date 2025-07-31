@@ -40,7 +40,6 @@ return {
           git_status = true,
           git_status_open = true,
           follow_file = true,
-          auto_close = true,
         },
         projects = {
           dev = { "~/enodo" }
