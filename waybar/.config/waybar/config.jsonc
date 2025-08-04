@@ -16,32 +16,51 @@
     "group/tray-expander",
     "pulseaudio",
     "bluetooth",
-    // "idle_inhibitor",
     "network",
     // "custom/vpn-menu",
     // "power-profiles-daemon",
     "cpu",
-    // "memory",
-    // "temperature",
-    // "bluetooth",
     "backlight",
     "battery",
     "clock",
-    // "tray",
+    "custom/update",
     "custom/power"
   ],
   // Modules configuration
   "hyprland/workspaces": {
-    "disable-scroll": true,
-    "all-outputs": true,
-    "warp-on-scroll": false,
-    "format": "{name}: {icon}",
+    "on-click": "activate",
+    "format": "{icon}",
     "format-icons": {
-      "urgent": "",
-      "active": "",
-      "focused": "",
-      "default": ""
+      "default": "",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "active": "󱓻"
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
     }
+  },
+  "custom/update": {
+    "format": "",
+    "exec": "~/.local/share/omarchy/bin/omarchy-update-available",
+    "on-click": "alacritty --class Omarchy --title Omarchy -e omarchy-update",
+    "interval": 3600
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛",
+    "on-click": "alacritty -e btop"
   },
   "keyboard-state": {
     "numlock": true,
@@ -59,39 +78,6 @@
     "tooltip-format": "Devices connected: {num_connections}",
     "on-click": "blueberry"
   },
-  // "mpd": {
-  //     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-  //     "format-disconnected": "Disconnected ",
-  //     "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-  //     "unknown-tag": "N/A",
-  //     "interval": 5,
-  //     "consume-icons": {
-  //         "on": " "
-  //     },
-  //     "random-icons": {
-  //         "off": "<span color=\"#f53c3c\"></span> ",
-  //         "on": " "
-  //     },
-  //     "repeat-icons": {
-  //         "on": " "
-  //     },
-  //     "single-icons": {
-  //         "on": "1 "
-  //     },
-  //     "state-icons": {
-  //         "paused": "",
-  //         "playing": ""
-  //     },
-  //     "tooltip-format": "MPD (connected)",
-  //     "tooltip-format-disconnected": "MPD (disconnected)"
-  // },
-  // "idle_inhibitor": {
-  //     "format": "{icon}",
-  //     "format-icons": {
-  //         "activated": "",
-  //         "deactivated": ""
-  //     }
-  // },
   "pulseaudio": {
     "format": "{icon}",
     "on-click": "alacritty --class=Wiremix -e wiremix",
@@ -118,11 +104,6 @@
     "format": " ",
     "tooltip": false
   },
-  "tray": {
-    "icon-size": 12,
-    "spacing": 12
-  },
-
   "clock": {
     // "timezone": "America/New_York",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -131,17 +112,6 @@
   "cpu": {
     "format": "{usage}% ",
     "tooltip": false
-  },
-  "memory": {
-    "format": "{}% "
-  },
-  "temperature": {
-    // "thermal-zone": 2,
-    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "critical-threshold": 80,
-    // "format-critical": "{temperatureC}°C {icon}",
-    "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""]
   },
   "backlight": {
     // "device": "acpi_video1",
@@ -217,25 +187,6 @@
       "d-nord": "nordvpn disconnect"
     },
   },
-  // "pulseaudio": {
-  //     // "scroll-step": 1, // %, can be a float
-  //     "format": "{volume}% {icon} {format_source}",
-  //     "format-bluetooth": "{volume}% {icon} {format_source}",
-  //     "format-bluetooth-muted": " {icon} {format_source}",
-  //     "format-muted": " {format_source}",
-  //     // "format-source": "{volume}% ",
-  //     "format-source-muted": "",
-  //     "format-icons": {
-  //         "headphone": "",
-  //         "hands-free": "",
-  //         "headset": "",
-  //         "phone": "",
-  //         "portable": "",
-  //         "car": "",
-  //         "default": ["", "", ""]
-  //     },
-  //     "on-click": "pavucontrol"
-  // },
   "custom/power": {
     "format" : "⏻ ",
     "tooltip": false,
