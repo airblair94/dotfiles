@@ -6,6 +6,7 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set expandtab")
 vim.cmd("set incsearch")
 vim.cmd("set ignorecase")
+vim.cmd("set laststatus=2")
 vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.keymap.set("i", "jk", "<Esc>", {})
