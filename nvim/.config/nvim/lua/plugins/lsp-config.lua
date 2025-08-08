@@ -1,13 +1,18 @@
 return {
   {
-    "mason-org/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
     config = function()
-      require("mason-lspconfig").setup({
+      local mason_tool_installer = require("mason-tool-installer")
+      mason_tool_installer.setup({
         ensure_installed = {
           "lua_ls",
           "ruff",
           "eslint",
+          "pylsp",
+          "html",
+          "mypy",
         },
+        automatic_installation = true,
       })
     end,
   },
@@ -26,53 +31,69 @@ return {
           },
         },
       },
-      {
-        "jose-elias-alvarez/typescript.nvim",
-        init = function()
-          require("lazyvim.util").lsp.on_attach(function(_, buffer)
-            -- stylua: ignore
-            vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
-            vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
-          end)
-        end,
-      },
-    },
-    ---@class PluginLspOpts
-    opts = {
-      ---@type lspconfig.options
-      servers = {
-        -- tsserver will be automatically installed with mason and loaded with lspconfig
-        tsserver = {},
-      },
-      -- you can do any additional lsp server setup here
-      -- return true if you don't want this server to be setup with lspconfig
-      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
-      setup = {
-        -- example to setup with typescript.nvim
-        tsserver = function(_, opts)
-          require("typescript").setup({ server = opts })
-          return true
-        end,
-        -- Specify * to use this function as a fallback for any server
-        -- ["*"] = function(server, opts) end,
-      },
     },
     config = function()
       vim.diagnostic.config({
-        virtual_text = {
+        -- virtual_text = {
+        --   current_line = true,
+        -- },
+        virtual_lines = {
           current_line = true,
         },
-        -- virtual_lines = {
-        --   current_line = true
-        -- }
       })
+
+      vim.lsp.config("pylsp", {
+        settings = {
+          pylsp = {
+            plugins = {
+              pycodestyle = { enabled = false },
+              pyflakes = { enabled = false },
+              pylint = { enabled = false },
+              autopep8 = { enabled = false },
+              yapf = { enabled = false },
+              mccabe = { enabled = false },
+              pylsp_mypy = { enabled = false },
+              pylsp_black = { enabled = false },
+              pylsp_isort = { enabled = false },
+            },
+          },
+        },
+      })
+
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("pylsp")
-      vim.lsp.enable("eslint")
-      vim.lsp.enable("ruff")
       vim.lsp.enable("ts_ls")
 
       vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
     end,
+  },
+  {
+    "mfussenegger/nvim-lint",
+    config = function()
+      local lint = require("lint")
+      lint.linters_by_ft = {
+        python = { "ruff", "mypy" },
+        javascript = { "eslint_d", "prettier" },
+        typescript = { "eslint_d", "prettier" },
+      }
+      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+        callback = function()
+          lint.try_lint()
+        end,
+      })
+    end,
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
+        javascript = { "eslint_d", "prettier" },
+        lua = { "stylua" },
+      },
+      default_format_opts = {
+        lsp_format = "fallback",
+      },
+    },
   },
 }
