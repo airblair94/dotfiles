@@ -36,7 +36,20 @@ return {
         },
         -- lualine_a = { "mode" },
         lualine_b = { "filename" },
-        lualine_c = { "buffers", "branch" },
+        lualine_c = {
+          "branch",
+          {
+            "buffers",
+            hide_filename_extensions = true,
+            show_modified_status = true,
+            use_mode_colors = true,
+            mode = 2,
+            buffers_color = {
+              active = { bg = '#336699', fg = '#FFFFFF' }, -- Example: blue background, white text for active
+              inactive = { bg = '#222222', fg = '#888888' }, -- Example: dark gray background, light gray text for inactive
+            },
+          },
+        },
         lualine_x = { "diagnostics" },
         lualine_y = { "filetype" },
         lualine_z = { "location" },

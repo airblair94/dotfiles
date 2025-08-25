@@ -6,6 +6,9 @@ vim.keymap.set("n", "<C-h>", "<C-w><left>", {})
 vim.keymap.set("n", "<C-j>", "<C-w><down>", {})
 vim.keymap.set("n", "<C-k>", "<C-w><up>", {})
 
+local notify = require('notify')
+vim.keymap.set("n", "<leader>n", notify.history, { desc = "Notification history"})
+
 vim.keymap.set("n", "<leader>bd", "<cmd>bp<bar>bd#<CR>", { desc = 'Delete buffer'})
 vim.keymap.set("n", "<leader>q", ":bp|bd#<CR>", { desc = 'Delete buffer'})
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = 'Next Buffer'})
