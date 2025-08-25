@@ -28,8 +28,10 @@ return {
     statuscolumn = { enabled = true },
     words = { enabled = true },
     lazygit = { enabled = true },
+    terminal = { enabled = true },
   },
   keys = {
-    { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },    
+    { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
+    { "<C-/>", function() Snacks.terminal() end, desc = "Terminal" },
   }
 }
