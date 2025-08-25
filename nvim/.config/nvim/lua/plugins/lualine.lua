@@ -43,9 +43,9 @@ return {
             hide_filename_extensions = true,
             show_modified_status = true,
             use_mode_colors = true,
-            mode = 2,
+            mode = 4,
             buffers_color = {
-              active = { bg = '#336699', fg = '#FFFFFF' }, -- Example: blue background, white text for active
+              active = { bg = 'lualine_{section}_normal', fg = '#FFFFFF' }, -- Example: blue background, white text for active
               inactive = { bg = '#222222', fg = '#888888' }, -- Example: dark gray background, light gray text for inactive
             },
           },
