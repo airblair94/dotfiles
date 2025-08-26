@@ -2,13 +2,13 @@ return {
   {
     "mason-org/mason.nvim",
     opts = {
-        ui = {
-            icons = {
-                package_installed = "✓",
-                package_pending = "➜",
-                package_uninstalled = "✗"
-            }
+      ui = {
+        icons = {
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗"
         }
+      }
     },
     config = function()
       require('mason').setup()
@@ -18,15 +18,15 @@ return {
     "mason-org/mason-lspconfig.nvim",
     opts = {},
     dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
-        "neovim/nvim-lspconfig",
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
     },
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     lazy = false,
     dependencies = {
-      'mason-org/mason.nvim'  
+      'mason-org/mason.nvim'
     },
     config = function()
       local mason_tool_installer = require("mason-tool-installer")
@@ -90,7 +90,7 @@ return {
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("pylsp")
       vim.lsp.enable("ts_ls")
-
+      vim.lsp.enable("ruff")
     end,
   },
   {
@@ -121,5 +121,13 @@ return {
         lsp_format = "fallback",
       },
     },
+    config = function()
+      require('conform').setup({
+        format_on_save = {
+          timeout_ms = 500,
+          lsp_format = 'fallback'
+        }
+      })
+    end
   },
 }
