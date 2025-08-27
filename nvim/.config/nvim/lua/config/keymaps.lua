@@ -15,6 +15,7 @@ vim.keymap.set("n", "<leader>n", ':Noice history<CR>', { desc = "Notification hi
 
 -- Buffer shotcuts
 vim.keymap.set("n", "<leader>bd", "<cmd>bp<bar>bd#<CR>", { desc = 'Delete buffer' })
+vim.keymap.set("n", "<leader>bo", "<cmd>:%bd|e#<CR>", { desc = 'Delete Other buffers' })
 vim.keymap.set("n", "<leader>q", ":bp|bd#<CR>", { desc = 'Delete buffer' })
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = 'Next Buffer' })
 vim.keymap.set("n", "<S-h>", "<cmd>bprev<CR>", { desc = 'Previous Buffer' })
