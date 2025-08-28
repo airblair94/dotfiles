@@ -98,7 +98,7 @@ return {
     config = function()
       local lint = require("lint")
       lint.linters_by_ft = {
-        python = { "ruff", "mypy" },
+        python = { "ruff" },
         javascript = { "eslint_d", "prettier" },
         typescript = { "eslint_d", "prettier" },
       }

@@ -20,7 +20,7 @@ return {
     explorer = { enabled = false },
     indent = { enabled = true },
     input = { enabled = true },
-    picker = { enabled = false },
+    picker = { enabled = true },
     notifier = { enabled = true },
     quickfile = { enabled = true },
     scope = { enabled = true },
@@ -31,7 +31,8 @@ return {
     terminal = { enabled = true },
   },
   keys = {
-    { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
-    { "<C-/>", function() Snacks.terminal() end, desc = "Terminal" },
+    { "<leader>lg", function() Snacks.lazygit() end,         desc = "Lazygit" },
+    { "<C-/>",      function() Snacks.terminal() end,        desc = "Terminal" },
+    { "<leader>sp", function() Snacks.picker.projects() end, desc = "Snacks Projects" }
   }
 }
