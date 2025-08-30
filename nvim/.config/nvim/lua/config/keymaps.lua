@@ -46,3 +46,4 @@ vim.keymap.set('n', '<leader>fg', ":lua require'telescope'.extensions.repo.repo{
   { desc = 'Telescope git projects' })
 vim.keymap.set('n', '<leader>fr', ":lua require'telescope'.extensions.frecency.frecency{workspace=CWD}<CR>",
   { desc = 'Telescope git projects' })
+vim.keymap.set('n', '<leader>fm', ':Noice telescope<CR>', { desc = 'Telescope Noice History' })
