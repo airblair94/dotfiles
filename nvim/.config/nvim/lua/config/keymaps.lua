@@ -1,7 +1,7 @@
 --basics
-vim.keymap.set("i", "jj", "<Esc>", {})
-vim.keymap.set("i", "jk", "<Esc>:w<CR>", {})
-vim.keymap.set("i", "jjk", "<Esc>:w<CR>", {})
+vim.keymap.set("i", "jj", "<Esc>", { silent = true, noremap = true })
+vim.keymap.set("i", "jk", "<Cmd>write<CR><Esc>", { silent = true, noremap = true })
+vim.keymap.set("i", "jjk", "<Cmd>write<CR><Esc>", { silent = true, noremap = true })
 vim.keymap.set("n", "<C-l>", "<C-w><right>", {})
 vim.keymap.set("n", "<C-h>", "<C-w><left>", {})
 vim.keymap.set("n", "<C-j>", "<C-w><down>", {})

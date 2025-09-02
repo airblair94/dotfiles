@@ -32,7 +32,9 @@ return {
   },
   keys = {
     { "<leader>lg", function() Snacks.lazygit() end,         desc = "Lazygit" },
-    { "<C-/>",      function() Snacks.terminal() end,        desc = "Terminal" },
+    { "<c-/>",      function() Snacks.terminal() end,        desc = "Toggle Terminal" },
+    { "<c-_>",      function() Snacks.terminal() end,        desc = "which_key_ignore" },
+    -- { "<C-/>",      function() Snacks.terminal() end,        desc = "Terminal" },
     { "<leader>sp", function() Snacks.picker.projects() end, desc = "Snacks Projects" }
   }
 }
