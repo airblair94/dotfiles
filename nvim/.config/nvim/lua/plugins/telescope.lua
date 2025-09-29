@@ -1,6 +1,7 @@
 return {
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.8',
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.8',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
@@ -12,19 +13,19 @@ return {
             treesitter = false
           },
           file_ignore_patterns = {
-              '.cargo/',
-              '.share/',
-              '.cache/',
-              '.local/',
-              '.ghcup/',
-              'pkg/',
+            '.cargo/',
+            '.share/',
+            '.cache/',
+            '.local/',
+            '.ghcup/',
+            'pkg/',
 
           }
         },
         pickers = {
           find_files = {
             hidden = true,
-            follow=true,
+            follow = true,
             mappings = {
               i = {
                 ["C-v"] = "file_vsplit"
@@ -48,11 +49,10 @@ return {
   {
     'nvim-telescope/telescope-project.nvim',
     dependencies = {
-        'nvim-telescope/telescope.nvim',
+      'nvim-telescope/telescope.nvim',
     },
     config = function()
       require('telescope').load_extension('project')
-      
     end
   },
   {
@@ -72,5 +72,5 @@ return {
       require("telescope").load_extension "frecency"
     end,
   }
-  
+
 }
