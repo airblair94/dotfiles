@@ -17,13 +17,11 @@
     "pulseaudio",
     "bluetooth",
     "network",
-    "custom/vpn-menu",
-    // "power-profiles-daemon",
+    // "custom/vpn-menu",
     "cpu",
     "backlight",
     "battery",
     "clock",
-    "custom/update",
     "custom/power"
   ],
   // Modules configuration
@@ -51,16 +49,10 @@
       "5": []
     }
   },
-  "custom/update": {
-    "format": "",
-    "exec": "~/.local/share/omarchy/bin/omarchy-update-available",
-    "on-click": "alacritty --class Omarchy --title Omarchy -e omarchy-update",
-    "interval": 3600
-  },
   "cpu": {
     "interval": 5,
     "format": "󰍛",
-    "on-click": "alacritty -e btop"
+    "on-click": "kitty -e btop"
   },
   "keyboard-state": {
     "numlock": true,
@@ -76,11 +68,11 @@
     "format-disabled": "󰂲",
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "blueberry"
+    "on-click": "kitty -e bluetui"
   },
   "pulseaudio": {
     "format": "{icon}",
-    "on-click": "alacritty --class=Wiremix -e wiremix",
+    "on-click": "kitty --class=Wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
@@ -162,31 +154,31 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "nospacing": 1,
-    "on-click": "alacritty --class=Impala -e impala"
+    "on-click": "kitty --class=Impala -e impala"
   },
-  "custom/vpn-menu": {
+//  "custom/vpn-menu": {
     // "format": "🔓",
-    "return-type": "json",
-    "format": "{icon}",
-    "tooltip-format": "{text}",
-    "exec": "$HOME/.config/waybar/get-vpn.sh",
-    "interval": 15,
-    "format-icons": {
-      "connected": "",
-      "disconnected": ""
-    },
-    "menu": "on-click",
-    "menu-file": "$HOME/.config/waybar/vpn_menu.xml", // Menu file in resources folder
-    "menu-actions": {
-      "e-home": "nmcli connection up Home", // & nm-applet --indicator",
-      "d-home": "nmcli connection down Home", // & killall nm-applet",
-      "e-tailscale": "tailscale up", // & tailscale-systray",
-      "d-tailscale": "tailscale down", // & killall tailscale-systray",
-      "e-nord": "nordvpn connect",
-      "e-nord-uk": "nordvpn connect uk",
-      "d-nord": "nordvpn disconnect"
-    },
-  },
+//    "return-type": "json",
+//    "format": "{icon}",
+//    "tooltip-format": "{text}",
+//    "exec": "$HOME/.config/waybar/get-vpn.sh",
+//    "interval": 15,
+//    "format-icons": {
+//      "connected": "",
+//      "disconnected": ""
+//    },
+//    "menu": "on-click",
+//    "menu-file": "$HOME/.config/waybar/vpn_menu.xml", // Menu file in resources folder
+//    "menu-actions": {
+//      "e-home": "nmcli connection up Home", // & nm-applet --indicator",
+//      "d-home": "nmcli connection down Home", // & killall nm-applet",
+//      "e-tailscale": "tailscale up", // & tailscale-systray",
+//      "d-tailscale": "tailscale down", // & killall tailscale-systray",
+//      "e-nord": "nordvpn connect",
+//      "e-nord-uk": "nordvpn connect uk",
+//      "d-nord": "nordvpn disconnect"
+//    },
+//  },
   "custom/power": {
     "format" : "⏻ ",
     "tooltip": false,

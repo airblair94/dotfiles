@@ -35,17 +35,18 @@ vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fc', function() builtin.find_files({ cwd = '~/.config/nvim/' }) end,
-	{ desc = 'Telescope find files' })
+  { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>/', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>/', ":lua require'telescope'.extensions.live_grep_args.live_grep_args{}<CR>",
+  { desc = 'Telescope live grep args' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>fp', ":lua require'telescope'.extensions.project.project{ hidden=true }<CR>",
-	{ desc = 'Telescope projects' })
+  { desc = 'Telescope projects' })
 vim.keymap.set('n', '<leader>fg', ":lua require'telescope'.extensions.repo.repo{}<CR>",
-	{ desc = 'Telescope git projects' })
-vim.keymap.set('n', '<leader>fr', ":lua require'telescope'.extensions.frecency.frecency{workspace=CWD}<CR>",
-	{ desc = 'Telescope git projects' })
+  { desc = 'Telescope git projects' })
+vim.keymap.set('n', '<leader>fr', builtin.lsp_references,
+  { desc = 'Telescope git projects' })
 vim.keymap.set('n', '<leader>fm', ':Noice telescope<CR>', { desc = 'Telescope Noice History' })
 vim.keymap.set('n', '<leader>fa', function() builtin.find_files({ no_ignore = true }) end,
-	{ desc = 'Telescope find all files' })
+  { desc = 'Telescope find all files' })
