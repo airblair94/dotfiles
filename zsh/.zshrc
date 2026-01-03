@@ -1,6 +1,8 @@
 source /usr/lib/spaceship-prompt/spaceship.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+eval "$(zoxide init zsh)"
+source <(fzf --zsh)
 
 export SPACESHIP_CONFIG="$HOME/.config/spaceship.zsh"
 
