@@ -50,3 +50,8 @@ vim.keymap.set('n', '<leader>fr', builtin.lsp_references,
 vim.keymap.set('n', '<leader>fm', ':Noice telescope<CR>', { desc = 'Telescope Noice History' })
 vim.keymap.set('n', '<leader>fa', function() builtin.find_files({ no_ignore = true }) end,
   { desc = 'Telescope find all files' })
+
+-- Custom Telescope
+local custom_tel = require('config.telescope.telescope-custom')
+vim.keymap.set('n', '<leader>fi', custom_tel.live_grep_include, { desc = 'Telescope Grep Include Path' })
+vim.keymap.set('n', '<leader>fe', custom_tel.live_grep_exclude, { desc = 'Telescope Grep Exclude Path' })
