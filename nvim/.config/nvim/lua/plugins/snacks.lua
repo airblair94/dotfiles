@@ -9,6 +9,20 @@ return {
     -- refer to the configuration section below
     bigfile = { enabled = true },
     dashboard = {
+      preset = {
+        pick = 'telescope.nvim',
+        keys = {
+          { icon = " ", key = "f", desc = "Find File", action = "<C-p>" },
+          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "g", desc = "Find Text", action = "<leader>/" },
+          { icon = " ", key = "r", desc = "Recent Files", action = ":Telescope frecency" },
+          { icon = " ", key = "p", desc = "Projects", action = "<leader>fp" },
+          { icon = " ", key = "c", desc = "Config", action = "<leader>fc" },
+          { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+          { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+        }
+      },
       sections = {
         { section = "header" },
         { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },

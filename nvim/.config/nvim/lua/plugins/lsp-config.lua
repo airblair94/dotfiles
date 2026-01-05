@@ -38,6 +38,8 @@ return {
           "pylsp",
           "html",
           "mypy",
+          "ts_ls",
+          "prettier"
         },
         automatic_installation = true,
       })
@@ -87,10 +89,24 @@ return {
         },
       })
 
+      vim.lsp.config("ts_ls", {
+        filetypes = { 'typescript', 'javascript', 'vue' },
+        init_options = {
+          plugins = {
+            {
+              name = '@vue/typescript-plugin',
+              location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
+              languages = { 'vue' }
+            }
+          }
+        }
+      })
+
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("pylsp")
       vim.lsp.enable("ts_ls")
       vim.lsp.enable("ruff")
+      vim.lsp.enable("eslint_d")
     end,
   },
   {
@@ -99,8 +115,9 @@ return {
       local lint = require("lint")
       lint.linters_by_ft = {
         python = { "ruff" },
-        javascript = { "eslint_d", "prettier" },
-        typescript = { "eslint_d", "prettier" },
+        javascript = { "eslint_d" },
+        typescript = { "eslint_d" },
+        vue = { "vuels", "eslint_d" },
       }
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         callback = function()
@@ -114,7 +131,7 @@ return {
     opts = {
       formatters_by_ft = {
         python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
-        javascript = { "eslint_d", "prettier" },
+        javascript = { "eslint", "eslint_d", "prettier" },
         lua = { "stylua" },
       },
       default_format_opts = {
