@@ -6,9 +6,29 @@ return {
     "giuxtaposition/blink-cmp-copilot",
     'rafamadriz/friendly-snippets',
     {
+      'supermaven-inc/supermaven-nvim',
+      cmd = {
+        'SupermavenUseFree',
+        'SupermavenStart',
+      },
+      opts = {
+        keymaps = {
+          accept_suggestion = nil,
+        },
+        disable_inline_completion = vim.g.ai_cmp
+      }
+    },
+    {
+      'saghen/blink.compat',
+      version = '2.*',
+      lazy = true,
+      opts = {}
+
+    },
+    {
       'L3MON4D3/LuaSnip',
       version = 'v2.*',
-      config = function ()
+      config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
       end
     }
@@ -35,7 +55,7 @@ return {
         -- nvim-cmp style menu
         draw = {
           columns = {
-            { "label", "label_description", gap = 1 },
+            { "label",     "label_description", gap = 1 },
             { "kind_icon", "kind" }
           },
         }
@@ -43,7 +63,7 @@ return {
       ghost_text = { enabled = true },
     },
     sources = {
-      default = { "lazydev", 'lsp', 'snippets', 'path', 'buffer', 'copilot', 'avante',},
+      default = { "lazydev", 'lsp', 'snippets', 'path', 'buffer', 'copilot', 'avante', 'supermaven' },
       providers = {
         avante = {
           module = 'blink-cmp-avante',
@@ -55,9 +75,14 @@ return {
         copilot = {
           module = 'blink-cmp-copilot',
           name = 'Copilot',
-          opts = {
-            -- options for copilot-cmp
-          }
+          opts = {} -- options for copilot-cmp
+        },
+        supermaven = {
+          name = "supermaven",
+          module = "blink.compat.source",
+          score_offset = 3,
+          enabled = true,
+          opts = {},
         },
         lazydev = {
           name = "LazyDev",
@@ -66,9 +91,14 @@ return {
           score_offset = 100,
           async = true
         },
-      }
+      },
+      fuzzy = { implementation = "prefer_rust_with_warning" }
     },
-    fuzzy = { implementation = "prefer_rust_with_warning" }
-  },
-  signature = { enabled = true },
+    windows = {
+      autocomplete = {
+        selection = "auto_insert",
+      },
+    },
+    signature = { enabled = true },
+  }
 }

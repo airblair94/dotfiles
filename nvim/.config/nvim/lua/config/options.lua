@@ -7,6 +7,7 @@ vim.cmd("set expandtab")
 vim.cmd("set incsearch")
 vim.cmd("set ignorecase")
 vim.cmd("set laststatus=2")
+vim.cmd("set relativenumber")
 vim.g.mapleader = " "
 vim.wo.relativenumber = true
 vim.o.winborder = "rounded"

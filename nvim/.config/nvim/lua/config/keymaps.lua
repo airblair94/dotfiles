@@ -35,7 +35,7 @@ vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fc', function() builtin.find_files({ cwd = '~/.config/nvim/' }) end,
-  { desc = 'Telescope find files' })
+  { desc = 'Telescope find config files' })
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>/', ":lua require'telescope'.extensions.live_grep_args.live_grep_args{}<CR>",
   { desc = 'Telescope live grep args' })
@@ -43,10 +43,10 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' 
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>fp', ":lua require'telescope'.extensions.project.project{ hidden=true }<CR>",
   { desc = 'Telescope projects' })
-vim.keymap.set('n', '<leader>fg', ":lua require'telescope'.extensions.repo.repo{}<CR>",
+vim.keymap.set('n', '<leader>fg', ":lua require'telescope'.extensions.repo.list{}<CR>",
   { desc = 'Telescope git projects' })
-vim.keymap.set('n', '<leader>fr', builtin.lsp_references,
-  { desc = 'Telescope git projects' })
+vim.keymap.set('n', '<leader>fr', ":lua require'telescope'.extensions.frecency.frecency{workspace=CWD}<CR>",
+  { desc = 'Telescope find recent files frecency' })
 vim.keymap.set('n', '<leader>fm', ':Noice telescope<CR>', { desc = 'Telescope Noice History' })
 vim.keymap.set('n', '<leader>fa', function() builtin.find_files({ no_ignore = true }) end,
   { desc = 'Telescope find all files' })
@@ -55,3 +55,6 @@ vim.keymap.set('n', '<leader>fa', function() builtin.find_files({ no_ignore = tr
 local custom_tel = require('config.telescope.telescope-custom')
 vim.keymap.set('n', '<leader>fi', custom_tel.live_grep_include, { desc = 'Telescope Grep Include Path' })
 vim.keymap.set('n', '<leader>fe', custom_tel.live_grep_exclude, { desc = 'Telescope Grep Exclude Path' })
+
+-- AI Tools
+vim.keymap.set('n', '<leader>ct', '<Cmd>CodexToggle<CR><Esc>', {})

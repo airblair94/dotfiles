@@ -44,14 +44,14 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      "echasnovski/mini.pick",         -- for file_selector provider mini.pick
       "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua", -- for file_selector provider fzf
-      "stevearc/dressing.nvim", -- for input provider dressing
-      "folke/snacks.nvim", -- for input provider snacks
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua",              -- for file_selector provider fzf
+      "stevearc/dressing.nvim",        -- for input provider dressing
+      "folke/snacks.nvim",             -- for input provider snacks
+      "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua",        -- for providers='copilot'
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -89,5 +89,31 @@ return {
         panel = { enabled = false },
       })
     end,
-  }
+  },
+  {
+    'kkrampis/codex.nvim',
+    lazy = true,
+    cmd = { 'Codex', 'CodexToggle' }, -- Optional: Load only on command execution
+    keys = {
+      {
+        '<leader>cc', -- Change this to your preferred keybinding
+        function() require('codex').toggle() end,
+        desc = 'Toggle Codex popup or side-panel',
+        mode = { 'n', 't' }
+      },
+    },
+    opts = {
+      keymaps     = {
+        toggle = nil,        -- Keybind to toggle Codex window (Disabled by default, watch out for conflicts)
+        quit = '<C-q>',      -- Keybind to close the Codex window (default: Ctrl + q)
+      },                     -- Disable internal default keymap (<leader>cc -> :CodexToggle)
+      border      = 'rounded', -- Options: 'single', 'double', or 'rounded'
+      width       = 0.8,     -- Width of the floating window (0.0 to 1.0)
+      height      = 0.8,     -- Height of the floating window (0.0 to 1.0)
+      model       = nil,     -- Optional: pass a string to use a specific model (e.g., 'o3-mini')
+      autoinstall = true,    -- Automatically install the Codex CLI if not found
+      panel       = false,   -- Open Codex in a side-panel (vertical split) instead of floating window
+      use_buffer  = false,   -- Capture Codex stdout into a normal buffer instead of a terminal buffer
+    },
+  },
 }
