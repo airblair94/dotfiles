@@ -35,7 +35,12 @@ return {
           end,
         },
         -- lualine_a = { "mode" },
-        lualine_b = { "filename" },
+        lualine_b = {
+          {
+            "filename",
+            path = 1,
+          },
+        },
         lualine_c = {
           "branch",
           {
@@ -46,7 +51,7 @@ return {
             mode = 4,
             buffers_color = {
               active = { bg = 'lualine_{section}_normal', fg = '#FFFFFF' }, -- Example: blue background, white text for active
-              inactive = { bg = '#222222', fg = '#888888' }, -- Example: dark gray background, light gray text for inactive
+              inactive = { bg = '#222222', fg = '#888888' },                -- Example: dark gray background, light gray text for inactive
             },
           },
         },
