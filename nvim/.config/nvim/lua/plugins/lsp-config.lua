@@ -102,16 +102,16 @@ return {
         }
       })
 
+      vim.lsp.config('*', {
+        capabilities = require('blink.cmp').get_lsp_capabilities()
+      })
+
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("pylsp")
       vim.lsp.enable("ts_ls")
       vim.lsp.enable("ruff")
       vim.lsp.enable("eslint_d")
-
-
-      vim.lsp.config('*', {
-        capabilities = require('blink.cmp').get_lsp_capabilities()
-      })
+      vim.lsp.enable("gopls")
     end,
   },
   {
@@ -123,6 +123,7 @@ return {
         javascript = { "eslint_d" },
         typescript = { "eslint_d" },
         vue = { "vuels", "eslint_d" },
+        go = { "golangcilint" }
       }
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         callback = function()
@@ -138,18 +139,15 @@ return {
         python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
         javascript = { "eslint", "eslint_d", "prettier" },
         lua = { "stylua" },
+        go = { "goimports", }
       },
       default_format_opts = {
         lsp_format = "fallback",
       },
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_format = 'fallback'
+      }
     },
-    config = function()
-      require('conform').setup({
-        format_on_save = {
-          timeout_ms = 500,
-          lsp_format = 'fallback'
-        }
-      })
-    end
   },
 }

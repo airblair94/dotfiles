@@ -1,4 +1,3 @@
-
 eval "$(zoxide init zsh)"
 source <(fzf --zsh)
 
@@ -43,6 +42,10 @@ fi
 # export ARCHFLAGS="-arch $(uname -m)"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
+if [[ "$OSTYPE" == 'linux-gnu' ]]; then
+  alias pdfopen="sioyek"
+elif [[ $OSTYPE == "darwin"* ]]; then
+fi
 
 if [[ "$OSTYPE" == 'linux-gnu' ]]; then
   # In Linux

@@ -2,22 +2,8 @@ return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
   dependencies = {
-    'Kaiser-Yang/blink-cmp-avante',
     "giuxtaposition/blink-cmp-copilot",
     'rafamadriz/friendly-snippets',
-    {
-      'supermaven-inc/supermaven-nvim',
-      cmd = {
-        'SupermavenUseFree',
-        'SupermavenStart',
-      },
-      opts = {
-        keymaps = {
-          accept_suggestion = nil,
-        },
-        disable_inline_completion = true
-      }
-    },
     {
       'saghen/blink.compat',
       version = '2.*',
@@ -63,25 +49,12 @@ return {
       ghost_text = { enabled = true },
     },
     sources = {
-      default = { "lazydev", 'lsp', 'snippets', 'path', 'buffer', 'copilot', 'avante', 'supermaven' },
+      default = { "lazydev", 'lsp', 'snippets', 'path', 'buffer', 'copilot', },
       providers = {
-        avante = {
-          module = 'blink-cmp-avante',
-          name = 'Avante',
-          opts = {
-            -- options for blink-cmp-avante
-          }
-        },
         copilot = {
           module = 'blink-cmp-copilot',
           name = 'Copilot',
           opts = {} -- options for copilot-cmp
-        },
-        supermaven = {
-          name = "supermaven",
-          module = "blink.compat.source",
-          -- score_offset = -3,
-          async = true,
         },
         lazydev = {
           name = "LazyDev",
@@ -92,12 +65,12 @@ return {
       },
     },
     fuzzy = { implementation = "prefer_rust_with_warning" },
-    windows = {
-      autocomplete = {
-        selection = "auto_insert",
-      },
-    },
     signature = { enabled = true },
+  },
+  windows = {
+    autocomplete = {
+      selection = "auto_insert",
+    },
   },
   opts_extend = { "sources.default", 'sources.compat' },
 }
