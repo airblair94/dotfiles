@@ -61,7 +61,7 @@ return {
         },
       },
     },
-    config = function()
+    config = function(_, opts)
       vim.diagnostic.config({
         -- virtual_text = {
         --   current_line = true,
@@ -107,6 +107,11 @@ return {
       vim.lsp.enable("ts_ls")
       vim.lsp.enable("ruff")
       vim.lsp.enable("eslint_d")
+
+
+      vim.lsp.config('*', {
+        capabilities = require('blink.cmp').get_lsp_capabilities()
+      })
     end,
   },
   {

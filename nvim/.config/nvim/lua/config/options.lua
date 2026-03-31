@@ -12,3 +12,4 @@ vim.g.mapleader = " "
 vim.wo.relativenumber = true
 vim.o.winborder = "rounded"
 vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd("set clipboard+=unnamedplus")

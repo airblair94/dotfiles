@@ -15,7 +15,7 @@ return {
         keymaps = {
           accept_suggestion = nil,
         },
-        disable_inline_completion = vim.g.ai_cmp
+        disable_inline_completion = true
       }
     },
     {
@@ -80,25 +80,24 @@ return {
         supermaven = {
           name = "supermaven",
           module = "blink.compat.source",
-          score_offset = 3,
-          enabled = true,
-          opts = {},
+          -- score_offset = -3,
+          async = true,
         },
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
           -- make lazydev completions top priority (see `:h blink.cmp`)
-          score_offset = 100,
           async = true
         },
       },
-      fuzzy = { implementation = "prefer_rust_with_warning" }
     },
+    fuzzy = { implementation = "prefer_rust_with_warning" },
     windows = {
       autocomplete = {
         selection = "auto_insert",
       },
     },
     signature = { enabled = true },
-  }
+  },
+  opts_extend = { "sources.default", 'sources.compat' },
 }
