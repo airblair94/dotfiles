@@ -1,3 +1,4 @@
 tmux/.tmux
 tmux/.tmuxifier
 nvim/.config/nvim/lazy-lock.json
+zsh/.zshenv

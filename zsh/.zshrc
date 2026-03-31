@@ -1,10 +1,4 @@
-source /usr/lib/spaceship-prompt/spaceship.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# source /opt/homebrew/opt/spaceship/spaceship.zsh
-# source /opt/homebrew/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source /opt/homebrew/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(zoxide init zsh)"
 source <(fzf --zsh)
 
@@ -14,10 +8,6 @@ SAVEHIST=10000
 setopt appendhistory
 
 export SPACESHIP_CONFIG="$HOME/.config/spaceship.zsh"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -38,7 +28,6 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE="20"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export SSH_AUTH_SOCK="~/.1password/agent.socket"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -54,25 +43,30 @@ fi
 # export ARCHFLAGS="-arch $(uname -m)"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Initialize nvm
-. /usr/share/nvm/init-nvm.sh
-# export NVM_DIR="$HOME/.nvm"
-#   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-#   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-#
-export PATH="$HOME/.tmuxifier/bin:$PATH"
+if [[ "$OSTYPE" == 'linux-gnu' ]]; then
+  # In Linux
+  # Initialize spaceship-prompt
+  source /usr/lib/spaceship-prompt/spaceship.zsh
+  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  # Initialize nvm
+  . /usr/share/nvm/init-nvm.sh
+  export SSH_AUTH_SOCK="~/.1password/agent.socket"
+elif [[ $OSTYPE == "darwin"* ]]; then
+  # Initialize spaceship-prompt
+  source /opt/homebrew/opt/spaceship/spaceship.zsh
+  source /opt/homebrew/opt/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /opt/homebrew/opt/zsh-syntax-highlighting/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  # initialize nvm
+  export NVM_DIR="$HOME/.nvm"
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+  export PATH="$HOME/.tmuxifier/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(tmuxifier init -)"
+fi
 
-eval "$(tmuxifier init -)"
-
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export ATLASSIAN_SITE_URL=$ATLASSIAN_SITE_URL
+export ATLASSIAN_USER_EMAIL=$ATLASSIAN_USER_EMAIL
+export ATLASSIAN_API_TOKEN=$ATLASSIAN_API_TOKEN
