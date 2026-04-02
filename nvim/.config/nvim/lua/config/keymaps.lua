@@ -27,7 +27,7 @@ vim.keymap.set('n', '<C-/>', function()
   { desc = 'Terminal' })
 
 -- Noice
-vim.keymap.set("n", "<leader>n", ':Noice history<CR>', { desc = "Notification history" })
+vim.keymap.set("n", "<leader>n", ':lua MiniNotify.show_history()<CR>', { desc = "Notification history" })
 
 -- Buffer shotcuts
 vim.keymap.set("n", "<leader>bd", "<cmd>bp<bar>bd#<CR>", { desc = 'Delete buffer' })
