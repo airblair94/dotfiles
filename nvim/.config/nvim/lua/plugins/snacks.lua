@@ -20,8 +20,4 @@ return {
     lazygit = { enabled = false },
     terminal = { enabled = true },
   },
-  keys = {
-    -- { "<leader>lg", function() Snacks.lazygit() end,  desc = "Lazygit" },
-    { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal" },
-  }
 }

@@ -9,6 +9,22 @@ vim.keymap.set("n", "<C-k>", "<C-w><up>", {})
 vim.keymap.set("n", "<leader>e", "<Cmd>e<CR>", { desc = "Refresh buffer" })
 
 vim.keymap.set("t", "<C-space>", "<C-\\><C-n>", {})
+vim.keymap.set('n', '<C-_>', function()
+    vim.cmd.vnew()
+    vim.cmd.term()
+    vim.cmd('startinsert')
+    vim.cmd.wincmd('J')
+    vim.api.nvim_win_set_height(0, 20)
+  end,
+  { desc = 'Terminal' })
+vim.keymap.set('n', '<C-/>', function()
+    vim.cmd.vnew()
+    vim.cmd.term()
+    vim.cmd('startinsert')
+    vim.cmd.wincmd('J')
+    vim.api.nvim_win_set_height(0, 20)
+  end,
+  { desc = 'Terminal' })
 
 -- Noice
 vim.keymap.set("n", "<leader>n", ':Noice history<CR>', { desc = "Notification history" })
