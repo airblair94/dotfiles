@@ -6,11 +6,9 @@ vim.keymap.set("n", "<C-l>", "<C-w><right>", {})
 vim.keymap.set("n", "<C-h>", "<C-w><left>", {})
 vim.keymap.set("n", "<C-j>", "<C-w><down>", {})
 vim.keymap.set("n", "<C-k>", "<C-w><up>", {})
+vim.keymap.set("n", "<leader>e", "<Cmd>e<CR>", { desc = "Refresh buffer" })
 
 vim.keymap.set("t", "<C-space>", "<C-\\><C-n>", {})
-
-local sessions = require('mini.sessions')
-vim.keymap.set("n", "<leader>ss", function() sessions.write() end, { desc = "Save session" })
 
 -- Noice
 vim.keymap.set("n", "<leader>n", ':Noice history<CR>', { desc = "Notification history" })
@@ -18,6 +16,7 @@ vim.keymap.set("n", "<leader>n", ':Noice history<CR>', { desc = "Notification hi
 -- Buffer shotcuts
 vim.keymap.set("n", "<leader>bd", "<cmd>bp<bar>bd#<CR>", { desc = 'Delete buffer' })
 vim.keymap.set("n", "<leader>bo", "<cmd>:%bd|e#<CR>", { desc = 'Delete Other buffers' })
+vim.keymap.set("n", "<leader>ba", "<cmd>%bd<CR>", { desc = 'Delete Other buffers' })
 vim.keymap.set("n", "<leader>q", ":bp|bd#<CR>", { desc = 'Delete buffer' })
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = 'Next Buffer' })
 vim.keymap.set("n", "<S-h>", "<cmd>bprev<CR>", { desc = 'Previous Buffer' })
@@ -59,3 +58,19 @@ vim.keymap.set('n', '<leader>fe', custom_tel.live_grep_exclude, { desc = 'Telesc
 
 -- AI Tools
 vim.keymap.set('n', '<leader>ct', '<Cmd>CodexToggle<CR><Esc>', {})
+
+-- Sessions
+local sessions = require('mini.sessions')
+vim.keymap.set('n', '<leader>ss',
+  function()
+    local root = vim.fs.root(0, ".git") or vim.fn.getcwd(0, 0)
+    local project_name = vim.fn.fnamemodify(root, ":t")
+    if vim.v.this_session == nil then
+      sessions.write(project_name)
+    else
+      local session_name = vim.fn.fnamemodify(vim.v.this_session, ':t:r')
+      sessions.write(session_name)
+    end
+  end,
+  { desc = 'Save session' })
+vim.keymap.set('n', '<leader>fs', function() sessions.select() end, { desc = 'Find session' })

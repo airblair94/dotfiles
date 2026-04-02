@@ -2,8 +2,25 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(details)
     local bufnr = details.buf
     if not pcall(vim.treesitter.start, bufnr) then -- try to start treesitter which enables syntax highlighting
-      return                                     -- Exit if treesitter was unable to start
+      return                                       -- Exit if treesitter was unable to start
     end
-    vim.bo[bufnr].syntax = "on"                  -- Use regex based syntax-highlighting as fallback as some plugins might need it
+    vim.bo[bufnr].syntax =
+    "on" -- Use regex based syntax-highlighting as fallback as some plugins might need it
   end
 })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  -- group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end,
+})
+
+-- vim.keymap.set('n', '<C-/>', function()
+--     vim.cmd.vnew()
+--     vim.cmd.term()
+--     vim.cmd.wincmd('J')
+--     vim.api.nvim_win_set_height(0, 10)
+--   end,
+--   { desc = 'Terminal' })

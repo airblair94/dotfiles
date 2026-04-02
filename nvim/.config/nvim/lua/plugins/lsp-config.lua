@@ -19,7 +19,67 @@ return {
     opts = {},
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
-      "neovim/nvim-lspconfig",
+      {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+          {
+            "folke/lazydev.nvim",
+            ft = "lua", -- only load on lua files
+            opts = {
+              library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+              },
+            },
+          },
+        },
+        config = function()
+          vim.diagnostic.config({
+            virtual_lines = {
+              current_line = true,
+            },
+          })
+
+          vim.lsp.config('*', {
+            capabilities = require('blink.cmp').get_lsp_capabilities()
+          })
+
+          vim.lsp.config("vue_ls", {
+            filetypes = { 'vue' },
+            settings = {
+              vue_language_server = {
+                validation = {
+                  template = true,
+                  script = true,
+                  style = true,
+                },
+              },
+            },
+          })
+
+          local vue_language_server_path = vim.fn.stdpath('data') ..
+              "/mason/packages/vue-language-server/node_modules"
+          vim.lsp.config('ts_ls', {
+            filetypes = { "typescript", "javascript", "vue", },
+            -- Ensure ts_ls finds the root tsconfig.json
+            -- root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+            init_options = {
+              plugins = {
+                {
+                  name = "@vue/typescript-plugin",
+                  location = vue_language_server_path, -- Mason usually handles this, but might need to be set
+                  languages = { "javascript", "typescript", 'vue' },
+                },
+              },
+            },
+          })
+
+          vim.lsp.enable('lua_ls')
+          vim.lsp.enable('vue_ls')
+          vim.lsp.enable('ts_ls')
+        end,
+      },
     },
   },
   {
@@ -36,10 +96,9 @@ return {
           "eslint",
           "lua_ls",
           "pylsp",
-          "html",
           "mypy",
+          "vue_ls",
           "ts_ls",
-          "prettier"
         },
         automatic_installation = true,
       })
@@ -47,83 +106,12 @@ return {
   },
   -- add tsserver and setup with typescript.nvim instead of lspconfig
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      {
-        "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
-        opts = {
-          library = {
-            -- See the configuration section for more details
-            -- Load luvit types when the `vim.uv` word is found
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-          },
-        },
-      },
-    },
-    config = function(_, opts)
-      vim.diagnostic.config({
-        -- virtual_text = {
-        --   current_line = true,
-        -- },
-        virtual_lines = {
-          current_line = true,
-        },
-      })
-
-      vim.lsp.config("pylsp", {
-        settings = {
-          pylsp = {
-            plugins = {
-              pycodestyle = { enabled = false },
-              pyflakes = { enabled = false },
-              pylint = { enabled = false },
-              autopep8 = { enabled = false },
-              yapf = { enabled = false },
-              mccabe = { enabled = false },
-              pylsp_mypy = { enabled = false },
-              pylsp_black = { enabled = false },
-              pylsp_isort = { enabled = false },
-            },
-          },
-        },
-      })
-
-      vim.lsp.config("ts_ls", {
-        filetypes = { 'typescript', 'javascript', 'vue' },
-        init_options = {
-          plugins = {
-            {
-              name = '@vue/typescript-plugin',
-              location = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server',
-              languages = { 'vue' }
-            }
-          }
-        }
-      })
-
-      vim.lsp.config('*', {
-        capabilities = require('blink.cmp').get_lsp_capabilities()
-      })
-
-      vim.lsp.enable("lua_ls")
-      vim.lsp.enable("pylsp")
-      vim.lsp.enable("ts_ls")
-      vim.lsp.enable("ruff")
-      vim.lsp.enable("eslint_d")
-      vim.lsp.enable("gopls")
-    end,
-  },
-  {
     "mfussenegger/nvim-lint",
     config = function()
       local lint = require("lint")
       lint.linters_by_ft = {
         python = { "ruff" },
-        javascript = { "eslint_d" },
-        typescript = { "eslint_d" },
-        vue = { "vuels", "eslint_d" },
-        go = { "golangcilint" }
+        go = { "golangcilint" },
       }
       vim.api.nvim_create_autocmd({ "BufWritePost" }, {
         callback = function()
@@ -137,17 +125,17 @@ return {
     opts = {
       formatters_by_ft = {
         python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
-        javascript = { "eslint", "eslint_d", "prettier" },
         lua = { "stylua" },
-        go = { "goimports", }
+        go = { "goimports", },
+        vue = { lsp_format = "never" },
       },
       default_format_opts = {
         lsp_format = "fallback",
       },
       format_on_save = {
         timeout_ms = 500,
-        lsp_format = 'fallback'
+      lsp_format = 'fallback'
       }
     },
-  },
+  }
 }

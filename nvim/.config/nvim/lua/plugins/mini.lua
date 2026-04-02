@@ -20,6 +20,50 @@ return {
     require('mini.bracketed').setup()
     require('mini.pick').setup()
     require('mini.surround').setup()
-    require('mini.sessions').setup()
+    require('mini.notify').setup()
+    require('mini.sessions').setup({
+      directory = vim.fn.stdpath('data') .. '/session',
+      file = '',
+      autowrite = false,
+      force = { read = false, write = true, delete = true },
+    })
+    local starter = require('mini.starter')
+    local Mvim_starter_custom = function()
+      return {
+        { action = function() MiniSessions.select() end, name = "Sessions", section = "Search" },
+        { action = "Telescope projects",                 name = "Projects", section = "Search" },
+        { action = "Telescope find_files",               name = "Files",    section = "Search" },
+        { action = "Lazy",                               name = "Lazy",     section = "Tools" },
+        { action = "Mason",                              name = "Mason",    section = "Tools" },
+        { action = "Quit",                               name = "Quit",     section = "Tools" }
+      }
+    end
+
+    require("mini.starter").setup({
+      items = {
+        Mvim_starter_custom(),
+        starter.sections.recent_files(5, false, false),
+        starter.sections.recent_files(5, true, false),
+        starter.sections.sessions(5, true),
+      },
+      header = function()
+        local v = vim.version()
+        local versionstring = string.format("  Neovim Version: %d.%d.%d", v.major, v.minor,
+          v.patch)
+        local image = [[
+          ┌─────────────────────────────────────────┐
+          │                                         │
+          │    ███╗   ███╗██╗   ██╗██╗███╗   ███╗   │
+          │    ████╗ ████║██║   ██║██║████╗ ████║   │
+          │    ██╔████╔██║██║   ██║██║██╔████╔██║   │
+          │    ██║╚██╔╝██║╚██╗ ██╔╝██║██║╚██╔╝██║   │
+          │    ██║ ╚═╝ ██║ ╚████╔╝ ██║██║ ╚═╝ ██║   │
+          │    ╚═╝     ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝   │
+          └─────────────────────────────────────────┘
+          ]]
+        local finalimage = image .. versionstring
+        return finalimage
+      end
+    })
   end
 }

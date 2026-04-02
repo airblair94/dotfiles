@@ -6,7 +6,7 @@ return {
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter').install({ "lua", "vim", "javascript", "python", "go", "env", "bash", "haskell", "html",
-        "json", "sql", "zig", "typescript" })
+        "vue", "json", "sql", "zig", "typescript" })
     end
   },
   {
