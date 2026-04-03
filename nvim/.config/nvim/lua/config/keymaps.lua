@@ -81,7 +81,7 @@ vim.keymap.set('n', '<leader>ss',
   function()
     local root = vim.fs.root(0, ".git") or vim.fn.getcwd(0, 0)
     local project_name = vim.fn.fnamemodify(root, ":t")
-    if vim.v.this_session == nil then
+    if vim.v.this_session == '' then
       sessions.write(project_name)
     else
       local session_name = vim.fn.fnamemodify(vim.v.this_session, ':t:r')
