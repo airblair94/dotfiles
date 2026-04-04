@@ -26,8 +26,9 @@ vim.keymap.set('n', '<C-/>', function()
   end,
   { desc = 'Terminal' })
 
--- Noice
-vim.keymap.set("n", "<leader>n", ':lua MiniNotify.show_history()<CR>', { desc = "Notification history" })
+-- Messages and logs
+vim.keymap.set("n", "<leader>n", ':lua MiniNotify.show_history()<CR>', { desc = "Mini Notification history" })
+vim.keymap.set('m', '<leader>m', ':messages<CR>', { desc = 'Show Messages' })
 
 -- Buffer shotcuts
 vim.keymap.set("n", "<leader>bd", "<cmd>bp<bar>bd#<CR>", { desc = 'Delete buffer' })
@@ -58,10 +59,7 @@ vim.keymap.set('n', '<leader>/', ":lua require'telescope'.extensions.live_grep_a
   { desc = 'Telescope live grep args' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
-vim.keymap.set('n', '<leader>fp', ":lua require'telescope'.extensions.project.project{ hidden=true }<CR>",
-  { desc = 'Telescope projects' })
-vim.keymap.set('n', '<leader>fg', ":lua require'telescope'.extensions.repo.list{}<CR>",
-  { desc = 'Telescope git projects' })
+vim.keymap.set('n', '<leader>fp', ":Telescope projects<CR>", { desc = 'Telescope projects' })
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = 'Telescope lsp references' })
 vim.keymap.set('n', '<leader>fm', ':Noice telescope<CR>', { desc = 'Telescope Noice History' })
 vim.keymap.set('n', '<leader>fa', function() builtin.find_files({ no_ignore = true }) end,
@@ -79,7 +77,7 @@ vim.keymap.set('n', '<leader>ct', '<Cmd>CodexToggle<CR><Esc>', {})
 local sessions = require('mini.sessions')
 vim.keymap.set('n', '<leader>ss',
   function()
-    local root = vim.fs.root(0, ".git") or vim.fn.getcwd(0, 0)
+    local root = vim.fn.getcwd(0, 0)
     local project_name = vim.fn.fnamemodify(root, ":t")
     if vim.v.this_session == '' then
       sessions.write(project_name)
