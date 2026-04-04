@@ -28,7 +28,7 @@ vim.keymap.set('n', '<C-/>', function()
 
 -- Messages and logs
 vim.keymap.set("n", "<leader>n", ':lua MiniNotify.show_history()<CR>', { desc = "Mini Notification history" })
-vim.keymap.set('m', '<leader>m', ':messages<CR>', { desc = 'Show Messages' })
+vim.keymap.set('n', '<leader>m', ':messages<CR>', { desc = 'Show Messages' })
 
 -- Buffer shotcuts
 vim.keymap.set("n", "<leader>bd", "<cmd>bp<bar>bd#<CR>", { desc = 'Delete buffer' })
