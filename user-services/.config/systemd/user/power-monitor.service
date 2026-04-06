@@ -1,6 +1,0 @@
-[Service]
-Environment=STARTUP_WAIT=30s
-ExecStart=/home/bezer/scripts/battery_script.sh
-
-[Install]
-WantedBy=default.target
