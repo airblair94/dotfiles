@@ -1,6 +1,7 @@
 --basics
 vim.keymap.set("i", "jj", "<Esc>", { silent = true, noremap = true })
 vim.keymap.set("i", "jk", "<Cmd>write<CR><Esc>", { silent = true, noremap = true })
+vim.keymap.set("i", "<C-s>", "<Cmd>write<CR><Esc>", { silent = true, noremap = true })
 vim.keymap.set("i", "jjk", "<Cmd>write<CR><Esc>", { silent = true, noremap = true })
 vim.keymap.set("n", "<C-l>", "<C-w><right>", {})
 vim.keymap.set("n", "<C-h>", "<C-w><left>", {})
@@ -8,6 +9,7 @@ vim.keymap.set("n", "<C-j>", "<C-w><down>", {})
 vim.keymap.set("n", "<C-k>", "<C-w><up>", {})
 vim.keymap.set("n", "<leader>e", "<Cmd>e<CR>", { desc = "Refresh buffer" })
 
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
 vim.keymap.set("t", "<C-space>", "<C-\\><C-n>", {})
 vim.keymap.set('n', '<C-_>', function()
     vim.cmd.vnew()

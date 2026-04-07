@@ -30,7 +30,8 @@
 - spaceship-prompt
 - zsh-autosuggestions
 - zsh-syntax-highlighting
-
+- tmux
+- tpm (manual git clone)
 
 ## helpful apps
 - zathura
