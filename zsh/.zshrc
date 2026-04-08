@@ -70,10 +70,12 @@ elif [[ $OSTYPE == "darwin"* ]]; then
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
+  export NODE_EXTRA_CA_CERTS="$HOME/netskope-chain.pem"
 
-  eval "$(tmuxifier init -)"
 fi
 
+eval "$(tmuxifier init -)"
 export ATLASSIAN_SITE_URL=$ATLASSIAN_SITE_URL
 export ATLASSIAN_USER_EMAIL=$ATLASSIAN_USER_EMAIL
 export ATLASSIAN_API_TOKEN=$ATLASSIAN_API_TOKEN
+
