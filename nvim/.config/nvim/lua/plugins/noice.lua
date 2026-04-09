@@ -18,6 +18,11 @@ return {
     messages = {
       enable = true,
     },
+    lsp = {
+      progress = {
+        enabled = true
+      }
+    },
     notify = {
       -- Noice can be used as `vim.notify` so you can route any notification like other messages
       -- Notification messages have their level and other properties set.
