@@ -11,24 +11,24 @@ vim.keymap.set("n", "<leader>e", "<Cmd>e<CR>", { desc = "Refresh buffer" })
 
 vim.keymap.set("t", "<C-space>", "<C-\\><C-n>", {})
 vim.keymap.set('n', '<C-_>', function()
-    vim.cmd.vnew()
-    vim.cmd.term()
-    vim.cmd('startinsert')
-    vim.cmd.wincmd('J')
-    vim.api.nvim_win_set_height(0, 20)
-  end,
-  { desc = 'Terminal' })
+		vim.cmd.vnew()
+		vim.cmd.term()
+		vim.cmd('startinsert')
+		vim.cmd.wincmd('J')
+		vim.api.nvim_win_set_height(0, 20)
+	end,
+	{ desc = 'Terminal' })
 vim.keymap.set('n', '<C-/>', function()
-    vim.cmd.vnew()
-    vim.cmd.term()
-    vim.cmd('startinsert')
-    vim.cmd.wincmd('J')
-    vim.api.nvim_win_set_height(0, 20)
-  end,
-  { desc = 'Terminal' })
+		vim.cmd.vnew()
+		vim.cmd.term()
+		vim.cmd('startinsert')
+		vim.cmd.wincmd('J')
+		vim.api.nvim_win_set_height(0, 20)
+	end,
+	{ desc = 'Terminal' })
 
 -- Messages and logs
-vim.keymap.set("n", "<leader>n", ':lua MiniNotify.show_history()<CR>', { desc = "Mini Notification history" })
+vim.keymap.set("n", "<leader>n", ':Noice<CR>', { desc = "Noice notification history" })
 vim.keymap.set('n', '<leader>m', ':messages<CR>', { desc = 'Show Messages' })
 
 -- Buffer shotcuts
@@ -54,17 +54,18 @@ vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fc', function() builtin.find_files({ cwd = '~/.config/nvim/' }) end,
-  { desc = 'Telescope find config files' })
+	{ desc = 'Telescope find config files' })
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>/', ":lua require'telescope'.extensions.live_grep_args.live_grep_args{}<CR>",
-  { desc = 'Telescope live grep args' })
+vim.keymap.set('n', '<leader>/',
+	function() builtin.live_grep({ additional_args = function(args) return { "--hidden" } end }) end,
+	{ desc = 'Telescope live grep args' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>fp', ":Telescope projects<CR>", { desc = 'Telescope projects' })
 vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = 'Telescope lsp references' })
 vim.keymap.set('n', '<leader>fm', ':Noice telescope<CR>', { desc = 'Telescope Noice History' })
 vim.keymap.set('n', '<leader>fa', function() builtin.find_files({ no_ignore = true }) end,
-  { desc = 'Telescope find all files' })
+	{ desc = 'Telescope find all files' })
 
 -- Custom Telescope
 local custom_tel = require('config.telescope.telescope-custom')
@@ -77,15 +78,15 @@ vim.keymap.set('n', '<leader>ct', '<Cmd>CodexToggle<CR><Esc>', {})
 -- Sessions
 local sessions = require('mini.sessions')
 vim.keymap.set('n', '<leader>ss',
-  function()
-    local root = vim.fn.getcwd(0, 0)
-    local project_name = vim.fn.fnamemodify(root, ":t")
-    if vim.v.this_session == '' then
-      sessions.write(project_name)
-    else
-      local session_name = vim.fn.fnamemodify(vim.v.this_session, ':t:r')
-      sessions.write(session_name)
-    end
-  end,
-  { desc = 'Save session' })
+	function()
+		local root = vim.fn.getcwd(0, 0)
+		local project_name = vim.fn.fnamemodify(root, ":t")
+		if vim.v.this_session == '' then
+			sessions.write(project_name)
+		else
+			local session_name = vim.fn.fnamemodify(vim.v.this_session, ':t:r')
+			sessions.write(session_name)
+		end
+	end,
+	{ desc = 'Save session' })
 vim.keymap.set('n', '<leader>fs', function() sessions.select() end, { desc = 'Find session' })

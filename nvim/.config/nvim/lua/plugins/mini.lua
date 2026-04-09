@@ -20,7 +20,6 @@ return {
     require('mini.bracketed').setup()
     require('mini.pick').setup()
     require('mini.surround').setup()
-    require('mini.notify').setup()
     require('mini.indentscope').setup()
     require('mini.sessions').setup({
       directory = vim.fn.stdpath('data') .. '/session',
