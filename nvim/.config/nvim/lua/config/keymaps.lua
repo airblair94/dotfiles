@@ -9,7 +9,6 @@ vim.keymap.set("n", "<C-j>", "<C-w><down>", {})
 vim.keymap.set("n", "<C-k>", "<C-w><up>", {})
 vim.keymap.set("n", "<leader>e", "<Cmd>e<CR>", { desc = "Refresh buffer" })
 
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {})
 vim.keymap.set("t", "<C-space>", "<C-\\><C-n>", {})
 vim.keymap.set('n', '<C-_>', function()
     vim.cmd.vnew()
