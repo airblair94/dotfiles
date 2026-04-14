@@ -19,7 +19,9 @@ return {
             '.local/',
             '.ghcup/',
             'pkg/',
-
+            '.git/refs/*',
+            '.git/objects/*',
+            '.git/logs/*',
           }
         },
         pickers = {
