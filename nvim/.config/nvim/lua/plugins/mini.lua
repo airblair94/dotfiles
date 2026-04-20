@@ -35,7 +35,7 @@ return {
         { action = "Telescope find_files",               name = "Files",    section = "Search" },
         { action = "Lazy",                               name = "Lazy",     section = "Tools" },
         { action = "Mason",                              name = "Mason",    section = "Tools" },
-        { action = "Quit",                               name = "Quit",     section = "Tools" }
+        { action = function() vim.cmd("quit") end,       name = "Quit",     section = "Tools" }
       }
     end
 

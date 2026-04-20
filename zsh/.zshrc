@@ -44,6 +44,7 @@ fi
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 if [[ "$OSTYPE" == 'linux-gnu' ]]; then
   alias pdfopen="sioyek"
+  alias ls='ls --color=auto'
 elif [[ $OSTYPE == "darwin"* ]]; then
 fi
 
