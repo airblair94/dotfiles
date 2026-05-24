@@ -15,14 +15,14 @@ local live_grep_helper = function(opts, include_exclude)
       local pieces = vim.split(prompt, "  ")
       local args = { "rg" }
       if pieces[1] then
-        table.insert(args, "--hidden")
+        -- table.insert(args, "--hidden")
         table.insert(args, "-e")
         table.insert(args, pieces[1])
       end
 
       if pieces[2] and include_exclude == 'exclude' then
         table.insert(args, "--iglob")
-        table.insert(args, "**/" .. pieces[2] .. "/**")
+        table.insert(args, "!**/" .. pieces[2] .. "/**")
       end
 
       if pieces[2] and include_exclude == 'include' then
@@ -41,14 +41,6 @@ local live_grep_helper = function(opts, include_exclude)
     cwd = opts.cwd,
   }
   return finder
-
-  -- pickers.new(opts, {
-  --   debounce = 100,
-  --   prompt_title = "Live Grep Include Path",
-  --   finder = finder,
-  --   preview = conf.grep_previewer(opts),
-  --   sorter = require("telescope.sorters").empty(),
-  -- }):find()
 end
 
 function M.live_grep_include(opts)

@@ -64,6 +64,7 @@ return {
             filetypes = { "typescript", "javascript", "vue", },
             -- Ensure ts_ls finds the root tsconfig.json
             -- root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+            patterns = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
             init_options = {
               plugins = {
                 {
@@ -134,7 +135,7 @@ return {
       },
       format_on_save = {
         timeout_ms = 500,
-      lsp_format = 'fallback'
+        lsp_format = 'fallback'
       }
     },
   }

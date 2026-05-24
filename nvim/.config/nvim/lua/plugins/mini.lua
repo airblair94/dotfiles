@@ -24,7 +24,7 @@ return {
     require('mini.sessions').setup({
       directory = vim.fn.stdpath('data') .. '/session',
       file = '',
-      autowrite = false,
+      autowrite = true,
       force = { read = false, write = true, delete = true },
     })
     local starter = require('mini.starter')

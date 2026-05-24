@@ -10,10 +10,6 @@ return {
         dependencies = {
           'huijiro/blink-cmp-supermaven',
         },
-        event = "InsertEnter",
-        cmd = {
-          "SupermavenUseFree",
-        },
         opts = {
           disable_inline_completion = true,
           keymaps = {
@@ -29,7 +25,7 @@ return {
 
       },
       {
-        'L3MON4D3/LuaSnip',
+        'l3mon4d3/luasnip',
         version = 'v2.*',
         config = function()
           require("luasnip.loaders.from_vscode").lazy_load()
@@ -39,13 +35,13 @@ return {
     version = '1.*',
     opts_extend = { "sources.default", 'sources.compat', 'sources.completion.enabled_providers' },
     ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
+    ---@type blink.cmp.config
     opts = {
-      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+      -- 'default' (recommended) for mappings similar to built-in completions (c-y to accept)
       -- 'super-tab' for mappings similar to vscode (tab to accept)
       -- 'enter' for enter to accept
       -- 'none' for no mappings
-      -- See :h blink-cmp-config-keymap for defining your own keymap
+      -- see :h blink-cmp-config-keymap for defining your own keymap
       keymap = { preset = 'default' },
       cmdline = { enabled = true },
       appearance = {
@@ -64,7 +60,7 @@ return {
             components = {
               kind = {
                 text = function(ctx)
-                  if ctx.source_name == 'supermaven' then return 'Supermaven' end
+                  if ctx.source_name == 'supermaven' then return 'supermaven' end
                   return ctx.kind
                 end,
               },
@@ -74,69 +70,36 @@ return {
         ghost_text = { enabled = true },
       },
       sources = {
-        -- completion = {
-        --   enabled_providers = { 'supermaven' },
-        -- },
-        default = { "lazydev", 'lsp', 'snippets', 'path', 'buffer', 'copilot', 'minuet', 'supermaven', },
+        default = { "lazydev", 'lsp', 'snippets', 'path', 'buffer', 'copilot', 'supermaven', },
         providers = {
           copilot = {
             module = 'blink-cmp-copilot',
-            name = 'Copilot',
+            name = 'copilot',
             opts = {} -- options for copilot-cmp
           },
           lazydev = {
-            name = "LazyDev",
+            name = "lazydev",
             module = "lazydev.integrations.blink",
             -- make lazydev completions top priority (see `:h blink.cmp`)
             async = true
           },
-          minuet = {
-            name = "minuet",
-            module = "minuet.blink",
-            -- score_offset = 50,
-            async = true,
-            -- timeout_ms = 3000,
-          },
+          -- minuet = {
+          --   name = "minuet",
+          --   module = "minuet.blink",
+          --   async = true,
+          -- },
           supermaven = {
             name = 'supermaven',
             async = true,
             module = 'blink-cmp-supermaven',
             score_offset = 100,
-            -- opts = {
-            --   cmp_name = 'supermaven',
-            --   cmp_source = 'supermaven',
-            --   kind = 'Supermaven'
-            -- }
           }
         },
       },
       fuzzy = { implementation = "prefer_rust_with_warning" },
       signature = { enabled = true },
     },
-    -- windows = {
-    --   autocomplete = {
-    --     selection = "auto_insert",
-    --   },
-    -- },
   },
-  -- {
-  --   'monkoose/neocodeium',
-  --   config = function()
-  --     local blink = require('blink.cmp')
-  --     require('neocodeium').setup {
-  --       filter = function()
-  --         return not blink.is_visible()
-  --       end,
-  --       completion = {
-  --         menu = {
-  --           auto_show = function(ctx)
-  --             return ctx.mode ~= 'default'
-  --           end,
-  --         }
-  --       }
-  --     }
-  --   end
-  -- },
   {
     'milanglacier/minuet-ai.nvim',
     config = function()
@@ -144,7 +107,7 @@ return {
         provider = 'claude',
         provider_options = {
           claude = {
-            api_key = 'ANTHROPIC_API_KEY_PERSONAL',
+            api_key = 'anthropic_api_key_personal',
           },
         },
         lsp = {

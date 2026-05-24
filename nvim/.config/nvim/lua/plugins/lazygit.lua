@@ -21,3 +21,4 @@ return {
     require('lazygit').setup()
   end,
 }
+

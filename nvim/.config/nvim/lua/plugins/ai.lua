@@ -40,6 +40,9 @@ return {
     "coder/claudecode.nvim",
     dependencies = { "folke/snacks.nvim" },
     config = true,
+    diff_opts = {
+      keep_terminal_focus = true,
+    },
     keys = {
       { "<leader>a",  nil,                              desc = "AI/Claude Code" },
       { "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
