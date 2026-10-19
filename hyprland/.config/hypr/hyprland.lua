@@ -50,7 +50,9 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("waybar & hyprpaper & hypridle")
   hl.exec_cmd("hyprlock")
   hl.exec_cmd("1password --silent")
+  hl.exec_cmd("netbird-ui")
   hl.exec_cmd("mako")
+  hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 end)
 
 
