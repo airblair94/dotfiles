@@ -57,6 +57,7 @@ if [[ "$OSTYPE" == 'linux-gnu' ]]; then
   # Initialize nvm
   . /usr/share/nvm/init-nvm.sh
   export SSH_AUTH_SOCK="~/.1password/agent.socket"
+  export DOCKER_HOST="unix:///run/user/1000/podman/podman.sock"
 elif [[ $OSTYPE == "darwin"* ]]; then
   # Initialize spaceship-prompt
   source /opt/homebrew/opt/spaceship/spaceship.zsh
