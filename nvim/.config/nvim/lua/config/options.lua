@@ -13,3 +13,6 @@ vim.wo.relativenumber = true
 vim.o.winborder = "rounded"
 vim.cmd.colorscheme "catppuccin-mocha"
 vim.cmd("set clipboard+=unnamedplus")
+vim.o.timeoutlen = 500
+vim.opt.number = true
+vim.opt.relativenumber = true

@@ -2,11 +2,32 @@ return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   opts = function()
+    local function get_mini_session()
+      local session = vim.v.this_session
+      if session == "" then
+        return ""
+      end
+      return vim.fn.fnamemodify(session, ":t")
+    end
     return {
 
       --[[add your custom lualine config here]]
       options = {
         theme = "onedark",
+      },
+      hooks = {
+        pre = {
+          read = function()
+            -- Safely turn off diagnostics before switching sessions
+            vim.diagnostic.disable()
+          end,
+        },
+        post = {
+          read = function()
+            -- Re-enable diagnostics when the new session buffers are loaded
+            vim.diagnostic.enable()
+          end,
+        },
       },
       sections = {
         lualine_a = {
@@ -56,7 +77,14 @@ return {
           },
         },
         lualine_x = { "diagnostics" },
-        lualine_y = { "filetype" },
+        lualine_y = {
+          "filetype",
+          {
+            get_mini_session,
+            icon = " ",
+            color = { fg = "#ff9e64", gui = "bold" },
+          },
+        },
         lualine_z = { "location" },
       },
       inactive_sections = {

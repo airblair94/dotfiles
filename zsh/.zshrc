@@ -43,10 +43,9 @@ fi
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 if [[ "$OSTYPE" == 'linux-gnu' ]]; then
-  alias pdfopen="sioyek"
-  alias ls='ls --color=auto'
 elif [[ $OSTYPE == "darwin"* ]]; then
 fi
+alias ls='ls --color=auto'
 
 if [[ "$OSTYPE" == 'linux-gnu' ]]; then
   # In Linux
@@ -71,13 +70,15 @@ elif [[ $OSTYPE == "darwin"* ]]; then
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
-  export NODE_EXTRA_CA_CERTS="$HOME/netskope-chain.pem"
+  export JIRA_BASE=$ATLASSIAN_SITE_URL
+  export JIRA_USER=$ATLASSIAN_USER_EMAIL
+  export JIRA_TOKEN=$ATLASSIAN_API_TOKEN
+
+  # Corporate CA (Netskope) for Node-based tools
+  export NODE_EXTRA_CA_CERTS=$HOME/.certs/netskope-chain.pem
 
 fi
 
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"
-export ATLASSIAN_SITE_URL=$ATLASSIAN_SITE_URL
-export ATLASSIAN_USER_EMAIL=$ATLASSIAN_USER_EMAIL
-export ATLASSIAN_API_TOKEN=$ATLASSIAN_API_TOKEN
 export ANTHROPIC_API_KEY_PERSONAL=$ANTHROPIC_API_KEY_PERSONAL

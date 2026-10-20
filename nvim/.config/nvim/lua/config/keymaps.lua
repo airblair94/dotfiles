@@ -33,7 +33,7 @@ vim.keymap.set("n", "<leader>n", ':Noice<CR>', { desc = "Noice notification hist
 vim.keymap.set('n', '<leader>m', ':messages<CR>', { desc = 'Show Messages' })
 
 -- Buffer shotcuts
-vim.keymap.set("n", "<leader>bd", "<cmd>bp<bar>bd#<CR>", { desc = 'Delete buffer' })
+vim.keymap.set("n", "<leader>bd", "<cmd>bp<bar>bd!<CR>", { desc = 'Delete buffer' })
 vim.keymap.set("n", "<leader>bo", "<cmd>:%bd|e#<CR>", { desc = 'Delete Other buffers' })
 vim.keymap.set("n", "<leader>ba", "<cmd>%bd<CR>", { desc = 'Delete Other buffers' })
 vim.keymap.set("n", "<leader>q", ":bp|bd#<CR>", { desc = 'Delete buffer' })
